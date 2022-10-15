@@ -1,4 +1,4 @@
-sessionId = 0;
+session = 0;
 subscrId = 0;
 
 async function postLogin(url = '', data = {}) {
@@ -9,9 +9,9 @@ async function postLogin(url = '', data = {}) {
         },
         body: JSON.stringify(data)
     });
-   const dat = await response.json()
-    sessionId = dat.sessionId;
-    console.log(sessionId)
+   const dat = await response.json();
+    session = dat.sessionId;
+    console.log(session)
 }
 
 async function postCreateDataSub(url = '', data = {}) {
@@ -56,11 +56,17 @@ async function postPublishData(url = '', data = {}) {
 call()
 
 async function call() {
-    await postLogin('http://127.0.0.1:8043/Methods/Login', {})
+    console.log(session)
+    if(session == 0) {
+        await postLogin('http://127.0.0.1:8043/Methods/Login', {});
+    }
+    let a = document.getElementById('a');
+    a.insertAdjacentHTML('afterend',"<h2>" + session + "</h2>")
+    //a.innerHTML = "<h2>" + session + "</h2>";
 
-    await postCreateDataSub('http://127.0.0.1:8043/Methods/CreateDataSubscription', {'sessionId': sessionId})
+    await postCreateDataSub('http://127.0.0.1:8043/Methods/CreateDataSubscription', {'sessionId': session})
 
-    await postCreateMonDI('http://127.0.0.1:8043/Methods/CreateMonitoredDataItems', {'sessionId': sessionId, "subscriptionId":subscrId, "items":[{ "itemId":74474}]})
+    await postCreateMonDI('http://127.0.0.1:8043/Methods/CreateMonitoredDataItems', {'sessionId': session, "subscriptionId":subscrId, "items":[{ "itemId":74474}]})
 
-    await postPublishData('http://127.0.0.1:8043/Methods/PublishData', {'sessionId': sessionId, "subscriptionId":subscrId})
+    await postPublishData('http://127.0.0.1:8043/Methods/PublishData', {'sessionId': session, "subscriptionId":subscrId})
 }
