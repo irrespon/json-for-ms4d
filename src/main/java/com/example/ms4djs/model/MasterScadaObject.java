@@ -3,6 +3,7 @@ package com.example.ms4djs.model;
 import org.json.simple.JSONArray;
 import org.springframework.stereotype.Component;
 
+//объект MasterScadaObject
 @Component
 public class MasterScadaObject {
 

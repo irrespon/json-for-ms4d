@@ -6,14 +6,14 @@ import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-
+//возвращает объект masterScadaObject из JsonObject
 @Component
 public class JsonObjectToMasterScadaObject {
 
     @Autowired
     MasterScadaObject masterScadaObject;
 
-    MasterScadaObject objJson(JSONObject obj) {
+    public MasterScadaObject objJson(JSONObject obj) {
 
         masterScadaObject.setAccessOPCUA((boolean) obj.get("AccessOPCUA"));
         masterScadaObject.setName((String) obj.get("Name"));
