@@ -185,7 +185,7 @@ async function loadFile(){
         alertMessageReadFile.innerHTML = "<lable class='alert alert-danger' role='alert'>Ошибка, файл не прочитан</lable>";
         nameFile = "";
     }
-    //console.log(result)
+    console.log(result)
 }
 
 async function createFormFileA(){

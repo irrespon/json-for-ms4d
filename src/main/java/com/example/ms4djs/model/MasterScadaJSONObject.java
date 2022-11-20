@@ -5,7 +5,7 @@ import org.springframework.stereotype.Component;
 
 //объект MasterScadaObject
 @Component
-public class MasterScadaObject {
+public class MasterScadaJSONObject {
 
     boolean AccessOPCUA;
     String Name;
@@ -14,7 +14,7 @@ public class MasterScadaObject {
     String Type;
     JSONArray Childs;
 
-    public MasterScadaObject() {
+    public MasterScadaJSONObject() {
 
     }
 

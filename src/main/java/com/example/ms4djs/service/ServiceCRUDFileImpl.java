@@ -3,11 +3,14 @@ package com.example.ms4djs.service;
 import com.example.ms4djs.CRUDDao.LoadFile;
 import com.example.ms4djs.CRUDDao.ReadFile;
 import com.example.ms4djs.CRUDDao.SaveFile;
+import com.example.ms4djs.model.MasterScadaCSVObject;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
+
+import java.util.List;
 
 @Service
 public class ServiceCRUDFileImpl implements ServiceCRUDFile {
@@ -32,8 +35,8 @@ public class ServiceCRUDFileImpl implements ServiceCRUDFile {
     }
 
     @Override
-    public String loadString(String pathFile) {
-        return null;
+    public List<MasterScadaCSVObject> loadCSV(String pathFile) {
+        return loadFile.loadCSV(pathFile);
     }
 
     @Override
@@ -42,7 +45,7 @@ public class ServiceCRUDFileImpl implements ServiceCRUDFile {
     }
 
     @Override
-    public void readStringFile(String stringObject) {
-
+    public void readCSVFile(List<MasterScadaCSVObject> csvObject) {
+        readFile.readCSVFile(csvObject);
     }
 }

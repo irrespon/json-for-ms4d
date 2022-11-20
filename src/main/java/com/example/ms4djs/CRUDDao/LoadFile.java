@@ -1,8 +1,11 @@
 package com.example.ms4djs.CRUDDao;
 
+import com.example.ms4djs.model.MasterScadaCSVObject;
 import org.json.simple.JSONObject;
+
+import java.util.List;
 
 public interface LoadFile {
     JSONObject loadJSON(String pathFile);
-    String loadString(String pathFile);
+    List<MasterScadaCSVObject> loadCSV(String pathFile);
 }

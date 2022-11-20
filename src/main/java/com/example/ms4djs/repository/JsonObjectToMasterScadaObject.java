@@ -1,6 +1,6 @@
 package com.example.ms4djs.repository;
 
-import com.example.ms4djs.model.MasterScadaObject;
+import com.example.ms4djs.model.MasterScadaJSONObject;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,16 +11,16 @@ import org.springframework.stereotype.Component;
 public class JsonObjectToMasterScadaObject {
 
     @Autowired
-    MasterScadaObject masterScadaObject;
+    MasterScadaJSONObject masterScadaJSONObject;
 
-    public MasterScadaObject objJson(JSONObject obj) {
+    public MasterScadaJSONObject objJson(JSONObject obj) {
 
-        masterScadaObject.setAccessOPCUA((boolean) obj.get("AccessOPCUA"));
-        masterScadaObject.setName((String) obj.get("Name"));
-        masterScadaObject.setTranslitedName((String) obj.get("TranslitedName"));
-        masterScadaObject.setID((long) obj.get("ID"));
-        masterScadaObject.setType((String) obj.get("Type"));
-        masterScadaObject.setChilds((JSONArray) obj.get("Childs"));
-        return masterScadaObject;
+        masterScadaJSONObject.setAccessOPCUA((boolean) obj.get("AccessOPCUA"));
+        masterScadaJSONObject.setName((String) obj.get("Name"));
+        masterScadaJSONObject.setTranslitedName((String) obj.get("TranslitedName"));
+        masterScadaJSONObject.setID((long) obj.get("ID"));
+        masterScadaJSONObject.setType((String) obj.get("Type"));
+        masterScadaJSONObject.setChilds((JSONArray) obj.get("Childs"));
+        return masterScadaJSONObject;
     }
 }

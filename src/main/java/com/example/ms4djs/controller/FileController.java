@@ -30,10 +30,10 @@ public class FileController {
         //определение типа файла, выбор соответсвующего метода
         switch (Files.getFileExtension(nameFile)) {
             case "json":
-                serviceCRUDFile.loadJSON(nameFile);
+                serviceCRUDFile.readJSONFile(serviceCRUDFile.loadJSON(nameFile));
                 break;
             case "csv":
-                serviceCRUDFile.loadString(nameFile);
+                serviceCRUDFile.readCSVFile(serviceCRUDFile.loadCSV(nameFile));
                 break;
         }
         return ResponseEntity.ok(nameFile);
