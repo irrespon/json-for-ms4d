@@ -1,16 +1,15 @@
-package com.example.ms4djs.CRUDDao;
+package com.example.ms4djs.Dao.File;
 
 import com.example.ms4djs.model.MasterScadaCSVObject;
 import com.example.ms4djs.model.MasterScadaJSONObject;
-import com.example.ms4djs.repository.JsonObjectToMasterScadaObject;
+import com.example.ms4djs.model.MasterScadaObjects;
+import com.example.ms4djs.util.JsonObjectToMasterScadaObject;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
-import java.util.Objects;
-import java.util.function.Predicate;
 
 //распределяем объекты
 @Component
@@ -18,6 +17,12 @@ public class ReadFileImpl implements ReadFile {
 
     @Autowired
     JsonObjectToMasterScadaObject jsonObjectToMasterScadaObject;
+
+    @Autowired
+    MasterScadaCSVObject masterScadaCSVObject;
+
+    @Autowired
+    MasterScadaObjects masterScadaObjects;
 
     @Override
     public void readJSONFile(JSONObject jsonObject) {
@@ -41,8 +46,15 @@ public class ReadFileImpl implements ReadFile {
 
     @Override
     public void readCSVFile(List<MasterScadaCSVObject> masterScadaCSVObjectList) {
-        Predicate<MasterScadaCSVObject> masterScadaCSVObjectPredicate1 = s -> s.getDisplayName().contains("Параметр");
-        Predicate<MasterScadaCSVObject> masterScadaCSVObjectPredicate2 = s -> s.getDisplayName().contains("Вход");
-       masterScadaCSVObjectList.stream().filter(masterScadaCSVObjectPredicate1.or(masterScadaCSVObjectPredicate2)).forEach(s-> System.out.println(s.getDisplayName()));
+//        Predicate<MasterScadaCSVObject> masterScadaCSVObjectPredicate1 = s -> s.getDisplayName().contains("Параметр");
+//        Predicate<MasterScadaCSVObject> masterScadaCSVObjectPredicate2 = s -> s.getDisplayName().contains("Вход");
+//       masterScadaCSVObjectList.stream()
+//               //.filter(masterScadaCSVObjectPredicate1.or(masterScadaCSVObjectPredicate2))
+//               .forEach(s-> s.getFullName().stream().forEach(a-> System.out.println(a)));
+        for(MasterScadaCSVObject masterScadaCSVObject:masterScadaCSVObjectList){
+            System.out.println(masterScadaCSVObject.getFullName2());
+           // masterScadaObjects.setObjList(masterScadaCSVObject.getFullName());
+
+        }
     }
 }

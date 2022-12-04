@@ -1,20 +1,42 @@
 package com.example.ms4djs.model;
 
-import com.opencsv.bean.CsvBindByPosition;
-import com.opencsv.bean.CsvNumber;
+import com.opencsv.bean.*;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Component
 public class MasterScadaCSVObject {
-    @CsvBindByPosition(position = 0)
+
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+
+    @CsvBindByName(column = "Property~Id элемента~Id")
    // @CsvNumber("")
     private String elementId;
-    @CsvBindByPosition(position = 1)
+
+    @CsvBindByName(column = "Property~Имя~DisplayName")
     private String displayName;
-    @CsvBindByPosition(position = 2)
-    private String fullName;
-    @CsvBindByPosition(position = 3)
+
+//    @CsvBindAndSplitByName(column = "Property~Полное имя~FullName", splitOn = "\\.", collectionType = List.class, elementType = String.class)
+//    private List<String> fullName;
+
+    @CsvBindByName(column = "Property~Полное имя~FullName")
+    private String fullName2;
+
+    @CsvBindByName(column = "Property~Классификация~ItemTypeDisplayName")
     private String elementType;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getElementId() {
         return elementId;
@@ -32,13 +54,13 @@ public class MasterScadaCSVObject {
         this.displayName = displayName;
     }
 
-    public String getFullName() {
-        return fullName;
-    }
-
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
-    }
+//    public List<String> getFullName() {
+//        return fullName;
+//    }
+//
+//    public void setFullName(List<String> fullName) {
+//        this.fullName = fullName;
+//    }
 
     public String getElementType() {
         return elementType;
@@ -46,5 +68,13 @@ public class MasterScadaCSVObject {
 
     public void setElementType(String elementType) {
         this.elementType = elementType;
+    }
+
+    public String getFullName2() {
+        return fullName2;
+    }
+
+    public void setFullName2(String fullName2) {
+        this.fullName2 = fullName2;
     }
 }

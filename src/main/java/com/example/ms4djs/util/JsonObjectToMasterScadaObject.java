@@ -1,4 +1,4 @@
-package com.example.ms4djs.repository;
+package com.example.ms4djs.util;
 
 import com.example.ms4djs.model.MasterScadaJSONObject;
 import org.json.simple.JSONArray;

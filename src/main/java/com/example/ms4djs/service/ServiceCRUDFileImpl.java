@@ -1,12 +1,11 @@
 package com.example.ms4djs.service;
 
-import com.example.ms4djs.CRUDDao.LoadFile;
-import com.example.ms4djs.CRUDDao.ReadFile;
-import com.example.ms4djs.CRUDDao.SaveFile;
+import com.example.ms4djs.Dao.File.LoadFile;
+import com.example.ms4djs.Dao.File.ReadFile;
+import com.example.ms4djs.Dao.File.SaveFile;
 import com.example.ms4djs.model.MasterScadaCSVObject;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
