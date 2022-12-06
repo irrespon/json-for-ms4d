@@ -15,7 +15,8 @@ public class ViewDataController {
 
     @GetMapping("/getSession")
     public ResponseEntity getSession(){
-        serviceGetJSON.getSession("\"\"");
+        String sessionId = serviceGetJSON.getSession("\"\"");
+        serviceGetJSON.getSubId(sessionId);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 

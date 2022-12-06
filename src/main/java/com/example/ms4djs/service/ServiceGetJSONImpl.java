@@ -12,12 +12,12 @@ public class ServiceGetJSONImpl implements ServiceGetJSON{
     JSONObjectElements jsonObjectElements;
 
     @Override
-    public int getSession(String user) {
+    public String getSession(String user) {
         return jsonObjectElements.getSession(user);
     }
 
     @Override
-    public int getSubId(int sessionId) {
+    public String getSubId(String sessionId) {
         return jsonObjectElements.getSubId(sessionId);
     }
 

@@ -17,7 +17,10 @@ public class JSONPostReq {
     @Autowired
     ReadJsonString readJsonString;
 
-    void getU(String urlPost, String jsonInputString) throws IOException {
+    String getVarFromJSON(String urlPost, String jsonInputString, String keyJson) throws IOException {
+
+        String valueJson = "";
+
         URL url = new URL(urlPost);
         HttpURLConnection con = (HttpURLConnection) url.openConnection();
         con.setRequestMethod("POST");
@@ -37,7 +40,8 @@ public class JSONPostReq {
             while ((responseLine = br.readLine()) != null) {
                 response.append(responseLine.trim());
             }
-            System.out.println(readJsonString.convertJsonString(response.toString()).get("sessionId"));
+           valueJson = String.valueOf(readJsonString.convertJsonString(response.toString()).get(keyJson));
         }
+        return valueJson;
     }
 }
