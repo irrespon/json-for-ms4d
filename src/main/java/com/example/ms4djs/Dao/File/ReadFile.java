@@ -7,5 +7,5 @@ import java.util.List;
 
 public interface ReadFile {
     void readJSONFile(JSONObject jsonObject);
-    void readCSVFile(List<MasterScadaCSVObject> masterScadaCSVObjectList);
+    List<String> readCSVFile(List<MasterScadaCSVObject> masterScadaCSVObjectList);
 }

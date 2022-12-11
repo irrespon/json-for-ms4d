@@ -12,12 +12,13 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.List;
 
-//возвращает jsonObject через JsonParser, который считывает файл из pathFile
+
 @Component
 public class LoadFileImpl implements LoadFile {
     JSONObject jsonObject = new JSONObject();
     JSONParser parser = new JSONParser();
 
+    //возвращает jsonObject через JsonParser, который считывает файл из pathFile
     @Override
     public JSONObject loadJSON(String pathFile) {
         try {

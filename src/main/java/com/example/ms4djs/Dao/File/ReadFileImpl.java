@@ -9,6 +9,7 @@ import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.List;
 
 //распределяем объекты
@@ -45,16 +46,19 @@ public class ReadFileImpl implements ReadFile {
     }
 
     @Override
-    public void readCSVFile(List<MasterScadaCSVObject> masterScadaCSVObjectList) {
+    public List<String> readCSVFile(List<MasterScadaCSVObject> masterScadaCSVObjectList) {
+        List<String> listFullName2 = new ArrayList<>();
 //        Predicate<MasterScadaCSVObject> masterScadaCSVObjectPredicate1 = s -> s.getDisplayName().contains("Параметр");
 //        Predicate<MasterScadaCSVObject> masterScadaCSVObjectPredicate2 = s -> s.getDisplayName().contains("Вход");
 //       masterScadaCSVObjectList.stream()
 //               //.filter(masterScadaCSVObjectPredicate1.or(masterScadaCSVObjectPredicate2))
 //               .forEach(s-> s.getFullName().stream().forEach(a-> System.out.println(a)));
         for(MasterScadaCSVObject masterScadaCSVObject:masterScadaCSVObjectList){
-            System.out.println(masterScadaCSVObject.getFullName2());
+            listFullName2.add(masterScadaCSVObject.getFullName2());
+            //System.out.println(masterScadaCSVObject.getFullName2());
            // masterScadaObjects.setObjList(masterScadaCSVObject.getFullName());
 
         }
+        return listFullName2;
     }
 }

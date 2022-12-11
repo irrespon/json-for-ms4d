@@ -1,6 +1,7 @@
 package com.example.ms4djs.controller;
 
 import com.example.ms4djs.service.ServiceCRUDFile;
+import com.example.ms4djs.service.ServiceGetJSON;
 import com.google.common.io.Files;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -14,6 +15,8 @@ public class FileController {
 
     @Autowired
     ServiceCRUDFile serviceCRUDFile;
+    @Autowired
+    ServiceGetJSON serviceGetJSON;
 
     @RequestMapping(value = "/upload", method = RequestMethod.POST,
             consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
@@ -33,7 +36,7 @@ public class FileController {
                 serviceCRUDFile.readJSONFile(serviceCRUDFile.loadJSON(nameFile));
                 break;
             case "csv":
-                serviceCRUDFile.readCSVFile(serviceCRUDFile.loadCSV(nameFile));
+                serviceGetJSON.setListPath(serviceCRUDFile.readCSVFile(serviceCRUDFile.loadCSV(nameFile)));
                 break;
         }
         return ResponseEntity.ok(nameFile);

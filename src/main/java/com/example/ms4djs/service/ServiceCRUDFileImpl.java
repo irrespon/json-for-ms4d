@@ -44,7 +44,7 @@ public class ServiceCRUDFileImpl implements ServiceCRUDFile {
     }
 
     @Override
-    public void readCSVFile(List<MasterScadaCSVObject> csvObject) {
-        readFile.readCSVFile(csvObject);
+    public List<String> readCSVFile(List<MasterScadaCSVObject> csvObject) {
+       return readFile.readCSVFile(csvObject);
     }
 }

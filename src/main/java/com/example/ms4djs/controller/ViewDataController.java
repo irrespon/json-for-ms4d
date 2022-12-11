@@ -9,18 +9,30 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class ViewDataController {
-
+    String sessionId ="";
+    int subId = 0;
     @Autowired
     ServiceGetJSON serviceGetJSON;
 
     @GetMapping("/getSession")
     public ResponseEntity getSession(){
-        String sessionId = serviceGetJSON.getSession("\"\"");
-        serviceGetJSON.getSubId(sessionId);
+        sessionId = serviceGetJSON.getSession("\"\"","");
+        subId = serviceGetJSON.getSubId(sessionId);
+        serviceGetJSON.addMonitoredListItems(sessionId, subId, serviceGetJSON.getListPath());
+
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    //@GetMapping("/viewTable")
+    @GetMapping("/getSession2")
+    public ResponseEntity getSession2(){
+        serviceGetJSON.getListItems(sessionId, subId, 0);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+//    @GetMapping("/getItems")
+//    public ResponseEntity getItems(){
+//
+//    }
 
 
 }

@@ -12,5 +12,5 @@ public interface ServiceCRUDFile {
     JSONObject loadJSON(String pathFile);
     List<MasterScadaCSVObject> loadCSV(String pathFile);
     void readJSONFile(JSONObject jsonObject);
-    void readCSVFile(List<MasterScadaCSVObject> csvObject);
+    List<String> readCSVFile(List<MasterScadaCSVObject> csvObject);
 }
